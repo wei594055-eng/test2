@@ -45,129 +45,83 @@ a {
 }
 
 /* =========================================
-   Header（頁首） ——— 單一版本（手機優先 / 桌機再放大）
+   Header（頁首）— 置中放大、隱藏 CTA
    ========================================= */
 
 .hdr {
   background: linear-gradient(135deg, var(--brand), #b85600);
   color: #fff;
-  padding-bottom: 8px; /* 與下方內容留點空間 */
+  padding: 20px 0 20px; /* 多一點上下呼吸感 */
 }
 
-/* 手機：LOGO 跨兩列，右側放標題+副標；CTA 另起一行 */
+/* 直向置中排列：Logo / Title / Subtitle 全部置中 */
 .hdr .wrap {
   display: grid;
-  grid-template-columns: 72px 1fr; /* LOGO 寬 + 文字區 */
-  grid-template-rows: auto auto auto; /* title / subtitle / CTA */
-  grid-template-areas:
-    'logo title'
-    'logo subtitle'
-    'cta  cta';
-  column-gap: 12px;
-  row-gap: 8px;
-  align-items: center;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  row-gap: 12px;
+  text-align: center;
 }
 
-/* 清除任何舊定位對 CTA 的干擾 */
-.hdr .wrap .cta {
-  position: static !important;
-  float: none !important;
+/* 隱藏 Header 的 LINE 按鈕（如果 HTML 還在） */
+.hdr .cta {
+  display: none !important;
 }
 
 .logo {
-  grid-area: logo;
-  width: 72px;
-  height: 72px;
-  border-radius: 12px;
+  width: 96px;
+  height: 96px;
+  border-radius: 16px;
   border: 3px solid #fff;
   background: #fff;
   object-fit: cover;
 }
+
 .site-title {
-  grid-area: title;
   margin: 0;
-  font-weight: 800;
-  /* 直接用 clamp 自適應，避免大小斷層 */
-  font-size: clamp(22px, 5.2vw, 32px);
-  line-height: 1.18;
-  letter-spacing: 0.02em;
+  font-weight: 900;
+  /* 自適應字級：手機夠大、桌機更醒目 */
+  font-size: clamp(28px, 7vw, 48px);
+  line-height: 1.12;
+  letter-spacing: 0.01em;
   color: #fff;
 }
+
+/* 副標置中排列、片語間距拉開 */
 .site-subtitle {
-  grid-area: subtitle;
-  margin: 2px 0 0;
+  margin: 0;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 10px;
-  font-size: 14px;
-  line-height: 1.55;
+  font-size: clamp(14px, 3.8vw, 20px);
+  line-height: 1.6;
   color: #fff;
 }
 .site-subtitle .sep {
   display: none;
-} /* 手機隱藏「｜」 */
+}
 .site-subtitle span {
   white-space: nowrap;
-} /* 不拆詞換行 */
-
-/* CTA：手機獨立下一行 */
-.hdr .cta {
-  grid-area: cta;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: #06c755;
-  color: #fff;
-  padding: 10px 16px;
-  border-radius: 14px;
-  font-weight: 800;
-  justify-self: start;
-  margin-top: 10px;
-  min-height: 44px;
-}
-.hdr .cta:hover {
-  transform: translateY(-1px);
 }
 
-/* 超小螢幕保護（避免擠爆） */
-@media (max-width: 360px) {
-  .site-title {
-    font-size: 22px;
-  }
-  .hdr .cta {
-    width: 100%;
-    justify-content: center;
-  }
-}
-
-/* 桌機 ≥900px：LOGO 橫跨兩列，CTA 置右；副標單行顯示分隔線 */
+/* 寬螢幕微調：Logo 再大、顯示分隔線 */
 @media (min-width: 900px) {
-  .hdr .wrap {
-    grid-template-columns: 96px 1fr auto;
-    grid-template-rows: auto auto;
-    grid-template-areas:
-      'logo title    cta'
-      'logo subtitle cta';
-    column-gap: 16px;
-    row-gap: 10px;
-  }
   .logo {
-    width: 96px;
-    height: 96px;
-  }
-  /* 標題已用 clamp，不再強制改字級，避免跳動 */
-  .site-subtitle {
-    white-space: nowrap;
-    gap: 0;
+    width: 120px;
+    height: 120px;
   }
   .site-subtitle .sep {
     display: inline;
     opacity: 0.85;
     margin: 0 8px;
   }
-  .hdr .cta {
-    margin-top: 0;
-    align-self: center;
+}
+
+/* 超小螢幕保護 */
+@media (max-width: 360px) {
+  .site-title {
+    font-size: 26px;
   }
 }
 
