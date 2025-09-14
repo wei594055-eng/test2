@@ -447,3 +447,19 @@ a {
   letter-spacing: 0.2px; /* 粗體略拉開字距更好讀 */
   line-height: 1.3;
 }
+/* === 強制把 Header（.hdr）裡的標題/副標變粗 ===
+   - 同時涵蓋 h1/h2/h3/p/span，以及你未來可能用的 .brand-title/.brand-subtitle
+   - 加上 !important 防止被其他樣式覆蓋
+   - 如果覺得太粗，把 800 換成 700 試試
+*/
+.hdr .wrap h1,
+.hdr .wrap h2,
+.hdr .wrap h3,
+.hdr .wrap p,
+.hdr .wrap span,
+.hdr .wrap .brand-title,
+.hdr .wrap .brand-subtitle {
+  font-weight: 800 !important;
+  letter-spacing: 0.2px; /* 讓粗體視覺不擁擠，可自行調整/刪除 */
+  line-height: 1.3;
+}
