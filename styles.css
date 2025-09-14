@@ -534,3 +534,26 @@ a {
     white-space: nowrap;
   } /* 不切開「合法」「嚴選娃臉」等片語 */
 }
+/* 主標題大小 */
+.site-title {
+  font-weight: 800;
+  font-size: 22px; /* 手機 */
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  color: #fff; /* 放在橘色底上保持白字 */
+}
+
+/* 主標題與副標題間距 */
+.site-subtitle {
+  margin-top: 8px; /* 手機間距 */
+}
+
+/* 桌機放大一點、間距再加一點 */
+@media (min-width: 768px) {
+  .site-title {
+    font-size: 28px;
+  }
+  .site-subtitle {
+    margin-top: 10px;
+  }
+}
