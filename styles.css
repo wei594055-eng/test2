@@ -617,3 +617,68 @@ a {
     margin-top: 0;
   }
 }
+/* === 手機優先的 Header 版型 === */
+.hdr .wrap {
+  display: grid;
+  grid-template-columns: 56px 1fr; /* 左LOGO、右文字 */
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+}
+
+.site-title {
+  font-weight: 800;
+  font-size: clamp(20px, 6vw, 28px); /* 手機→桌機自適應 */
+  line-height: 1.15;
+  letter-spacing: 0.02em;
+  color: #fff;
+  margin: 0;
+}
+
+/* 副標：手機可換行、不擠在一起 */
+.site-subtitle {
+  margin-top: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #fff;
+}
+.site-subtitle .sep {
+  display: none;
+} /* 手機隱藏「｜」 */
+
+/* 讓按鈕在手機獨立下一行（很關鍵） */
+.hdr .cta {
+  position: static; /* 防止舊樣式是 absolute */
+  grid-column: 1 / -1; /* 佔滿整列：獨立新的一行 */
+  justify-self: start;
+  margin-top: 6px;
+}
+
+/* 桌機≥768px：回到三欄，副標單行顯示分隔線 */
+@media (min-width: 768px) {
+  .hdr .wrap {
+    grid-template-columns: auto 1fr auto;
+  }
+  .site-subtitle {
+    white-space: nowrap;
+    gap: 0;
+  }
+  .site-subtitle .sep {
+    display: inline;
+    opacity: 0.85;
+    margin: 0 6px;
+  }
+  .hdr .cta {
+    grid-column: auto;
+    margin-top: 0;
+    align-self: center;
+  }
+}
