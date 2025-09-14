@@ -682,3 +682,71 @@ a {
     align-self: center;
   }
 }
+/* === FIX: Header 在手機擠成一坨，強制改為堆疊 === */
+@media (max-width: 767.98px) {
+  .hdr .wrap {
+    display: grid !important;
+    grid-template-columns: 56px 1fr !important; /* 左 LOGO、右文字 */
+    align-items: center !important;
+    gap: 10px !important;
+  }
+  .logo {
+    width: 56px !important;
+    height: 56px !important;
+    border-radius: 12px !important;
+  }
+
+  .site-title {
+    font-weight: 800 !important;
+    font-size: 22px !important;
+    line-height: 1.15 !important;
+    letter-spacing: 0.02em !important;
+    color: #fff !important;
+    margin: 0 !important;
+  }
+
+  .site-subtitle {
+    margin-top: 6px !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+    color: #fff !important;
+  }
+  .site-subtitle .sep {
+    display: none !important;
+  }
+
+  /* 讓按鈕獨立到下一行 */
+  .hdr .cta {
+    position: static !important;
+    grid-column: 1 / -1 !important;
+    justify-self: start !important;
+    margin-top: 8px !important;
+  }
+}
+
+/* 桌機回到三欄佈局 */
+@media (min-width: 768px) {
+  .hdr .wrap {
+    grid-template-columns: auto 1fr auto !important;
+    display: grid !important;
+  }
+  .site-subtitle {
+    white-space: nowrap !important;
+    gap: 0 !important;
+  }
+  .site-subtitle .sep {
+    display: inline !important;
+    opacity: 0.85 !important;
+    margin: 0 6px !important;
+  }
+  .hdr .cta {
+    grid-column: auto !important;
+    margin-top: 0 !important;
+  }
+  .site-title {
+    font-size: 28px !important;
+  }
+}
