@@ -557,3 +557,63 @@ a {
     margin-top: 10px;
   }
 }
+/* === Header：行動優先排版，避免擠成一坨 === */
+.hdr .wrap {
+  display: grid; /* 手機先用兩欄網格 */
+  grid-template-columns: 56px 1fr;
+  align-items: center;
+  gap: 10px;
+}
+.logo {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+}
+
+.site-title {
+  font-weight: 800;
+  font-size: clamp(20px, 6vw, 28px); /* 手機→桌機自適應字級 */
+  line-height: 1.15;
+  letter-spacing: 0.02em;
+  color: #fff;
+  margin: 0;
+}
+
+.site-subtitle {
+  margin-top: 6px;
+  display: flex; /* 用 flex 控制間距，不吃多餘空白 */
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #fff;
+}
+.site-subtitle .sep {
+  display: none;
+} /* 手機隱藏分隔線，避免擠 */
+
+.hdr .cta {
+  grid-column: 1 / -1; /* 按鈕獨立新的一行 */
+  justify-self: start;
+  margin-top: 4px;
+}
+
+/* >=768px：桌機再排回三欄，副標單行顯示分隔線 */
+@media (min-width: 768px) {
+  .hdr .wrap {
+    grid-template-columns: auto 1fr auto;
+  }
+  .site-subtitle {
+    white-space: nowrap;
+    gap: 0;
+  }
+  .site-subtitle .sep {
+    display: inline;
+    opacity: 0.85;
+    margin: 0 6px;
+  }
+  .hdr .cta {
+    grid-column: auto;
+    margin-top: 0;
+  }
+}
