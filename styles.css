@@ -463,3 +463,28 @@ a {
   letter-spacing: 0.2px; /* 讓粗體視覺不擁擠，可自行調整/刪除 */
   line-height: 1.3;
 }
+/* === 強制把 Header（.hdr）裡的所有文字改為粗體 ===
+   - 直接指定 .hdr .wrap 與其所有子元素 * 都繼承粗體
+   - 加上 !important，避免被其他樣式覆蓋
+   - 覺得太粗就把 800 改成 700（中文字常見只到 700）
+*/
+.hdr .wrap {
+  font-weight: 800 !important;
+}
+.hdr .wrap * {
+  font-weight: inherit !important; /* 子元素繼承上面那個粗體 */
+}
+
+/* 讓副標更好讀的微調（可選） */
+.hdr .wrap p {
+  letter-spacing: 0.2px; /* 粗體時字距略放鬆 */
+  line-height: 1.3;
+}
+
+/* 如果你的瀏覽器/字型支援可變字重，這段能再強化粗細（可選） */
+@supports (font-variation-settings: normal) {
+  .hdr .wrap,
+  .hdr .wrap * {
+    font-variation-settings: 'wght' 800 !important;
+  }
+}
