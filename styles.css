@@ -488,3 +488,24 @@ a {
     font-variation-settings: 'wght' 800 !important;
   }
 }
+/* 副標：桌機單行、手機自動換行 */
+.site-subtitle {
+  font-size: 14px;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+  color: #fff;
+  white-space: nowrap; /* 桌機維持單行 */
+}
+.site-subtitle .sep {
+  margin: 0 6px;
+  opacity: 0.9;
+}
+
+@media (max-width: 420px) {
+  .site-subtitle {
+    white-space: normal;
+  } /* 手機允許換行 */
+  .site-subtitle .sep {
+    display: none;
+  } /* 手機拿掉分隔線避免擠 */
+}
