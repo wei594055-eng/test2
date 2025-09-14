@@ -509,3 +509,28 @@ a {
     display: none;
   } /* 手機拿掉分隔線避免擠 */
 }
+/* 副標：桌機單行；手機換行但不拆詞 */
+.site-subtitle {
+  display: flex;
+  gap: 6px;
+  flex-wrap: nowrap;
+  font-size: 14px;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+  color: #fff;
+}
+.site-subtitle .sep {
+  opacity: 0.9;
+}
+
+@media (max-width: 420px) {
+  .site-subtitle {
+    flex-wrap: wrap;
+  } /* 手機允許換行（依片語換） */
+  .site-subtitle .sep {
+    display: none;
+  }
+  .site-subtitle span {
+    white-space: nowrap;
+  } /* 不切開「合法」「嚴選娃臉」等片語 */
+}
