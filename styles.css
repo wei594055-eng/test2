@@ -51,7 +51,7 @@ a {
 .hdr {
   background: linear-gradient(135deg, var(--brand), #b85600);
   color: #fff;
-  padding-bottom: 8px;
+  padding-bottom: 8px; /* 與下方內容留點空間 */
 }
 
 /* 手機：LOGO 跨兩列，右側放標題+副標；CTA 另起一行 */
@@ -87,7 +87,8 @@ a {
   grid-area: title;
   margin: 0;
   font-weight: 800;
-  font-size: 24px; /* 手機標題舒適尺寸 */
+  /* 直接用 clamp 自適應，避免大小斷層 */
+  font-size: clamp(22px, 5.2vw, 32px);
   line-height: 1.18;
   letter-spacing: 0.02em;
   color: #fff;
@@ -109,6 +110,7 @@ a {
   white-space: nowrap;
 } /* 不拆詞換行 */
 
+/* CTA：手機獨立下一行 */
 .hdr .cta {
   grid-area: cta;
   display: inline-flex;
@@ -120,17 +122,21 @@ a {
   border-radius: 14px;
   font-weight: 800;
   justify-self: start;
-  margin-top: 10px; /* 與副標拉開 */
-  min-height: 44px; /* 觸控友善 */
+  margin-top: 10px;
+  min-height: 44px;
 }
 .hdr .cta:hover {
   transform: translateY(-1px);
 }
 
-/* 超小螢幕保護 */
+/* 超小螢幕保護（避免擠爆） */
 @media (max-width: 360px) {
   .site-title {
     font-size: 22px;
+  }
+  .hdr .cta {
+    width: 100%;
+    justify-content: center;
   }
 }
 
@@ -149,9 +155,7 @@ a {
     width: 96px;
     height: 96px;
   }
-  .site-title {
-    font-size: 32px;
-  }
+  /* 標題已用 clamp，不再強制改字級，避免跳動 */
   .site-subtitle {
     white-space: nowrap;
     gap: 0;
