@@ -481,3 +481,22 @@ a {
     transition: none !important;
   }
 }
+/* ---- Robust Logo styles: 支援 <img class="logo"> 或 <div class="logo"><img> ---- */
+.logo {
+  width: 96px; /* 你的現有尺寸可保留 */
+  height: 96px;
+  border-radius: 16px;
+  border: 3px solid #fff;
+  background: #fff;
+  display: block; /* 若 .logo 是 <img> 也能套用 */
+  overflow: hidden; /* 切齊圓角 */
+}
+
+/* 若 .logo 是容器、裡面再放 <img>，把圖片撐滿 */
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: inherit;
+}
